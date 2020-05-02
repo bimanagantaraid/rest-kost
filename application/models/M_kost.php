@@ -29,7 +29,7 @@
 
         public function filter($keterangan,$kota){
             if($keterangan == "default" & $kota == "default"){
-                return $this->get_kost(null);
+                return $this->getKost(null);
             }else if($keterangan == "default" & !empty($kota)){
                 return $this->db->select('*')
                 ->from('kost')
@@ -47,6 +47,10 @@
                 ->where('kota like', $kota)
                 ->get()->result();
             }
+        }
+
+        public function getkostlist($page, $start){
+            return $query = $this->db->get('kost',$page,$start)->result();
         }
 
     }

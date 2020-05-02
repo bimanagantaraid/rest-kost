@@ -80,4 +80,14 @@ class User extends REST_Controller{
             ],REST_Controller::HTTP_BAD_REQUEST);
         }
     }
+
+    function getdatausersewa_get(){
+        $id = $this->get('id');
+        if($id===null){
+            $data = $this->m_user->getuserSewa();
+        }else{
+            $data = $this->m_user->getuserSewa($id);
+        }
+        $this->response($data,200);
+    }
 }
