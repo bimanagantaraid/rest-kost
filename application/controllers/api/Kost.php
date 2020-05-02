@@ -109,6 +109,17 @@
             $data = $this->m_kost->filter($keterangan,$kota);
             $this->response($data, 200);
         }
+
+        function getkostlistpage_get(){
+            $page = $this->get('page');
+            $from = $this->get('from');
+            $data = $this->m_kost->getkostlist($page,$from);
+            $this->response($data,200);
+        }
+
+        function getkostbykota(){
+            
+        }
         
     }
 

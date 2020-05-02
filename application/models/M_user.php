@@ -25,4 +25,18 @@
             $this->db->delete('user');
             return $this->db->affected_rows();
         }
+
+        public function getuserSewa($id=null){
+            if($id===null){
+                return $this->db->select('*')
+                ->from('sewa')
+                ->join('user','sewa.id=user.id')
+                ->join('kost','sewa.idkost=kost.idkost')->get()->result(); 
+            }else{
+                return $this->db->select('*')
+                ->from('sewa')
+                ->join('user','sewa.id=user.id')
+                ->join('kost','sewa.idkost=kost.idkost')->where('user.id',$id)->get()->result();
+            }
+        }
     }
